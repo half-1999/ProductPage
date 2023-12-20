@@ -1,0 +1,208 @@
+
+.navbar-container{
+    /* display: flex; */
+    justify-content: space-between;
+    /* margin: 6px 18px; */
+    position: relative;
+    padding: 30px;
+    padding-top: 80px;
+    background-color: #000;
+    /* width: 98.5vw; */
+    overflow-x: hidden;
+  }
+  .test{
+    /* padding: 20px; */
+    padding: 30px;
+    padding-top: 80px;
+    background-color: #000;
+    width: 98.5vw;
+
+  }
+.products-heading {
+    text-align: center;
+    margin: 40px 0;
+    color: #324d67;
+}
+.products-heading span {
+    font-size: 40px;
+    font-weight: 800;
+}
+.products-heading p {
+    font-size: 16px;
+    font-weight: 200;
+}
+.products-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    grid-gap: 15px;
+    gap: 15px;
+    margin-top: 20px;
+    margin-bottom: 100px;
+    width: 100%;
+}
+.product-card {
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 10%;
+    background-color: #d2d2d2; /* Set the color for odd-indexed cards */
+  }
+  
+  
+.product-image {
+    border-radius: 15px;
+    transition: transform 0.5s ease;
+}
+.product-card:hover img {
+    /* margin-left: 10px; */
+    transform: scale(1.1);
+    /* box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); Optional: Add a subtle box shadow for depth */
+    border-radius: 10%;
+
+}
+.product-name {
+    font-weight: 700;
+    font-size: 20px;
+    color: #00b0ef;
+}
+/* .product-card:hover .product-name {
+    margin-left: 10px;
+    margin-top: 10px;
+} */
+.product-price {
+    font-weight: 800;
+    margin-top: 6px;
+}
+/* .product-card:hover .product-price {
+    margin-left: 13px;
+} */
+.footer-banner-container {
+    padding: 100px 40px;
+    background-color: #00afac;
+    border-radius: 15px;
+    position: relative;
+    height: 400px;
+    line-height: 1;
+    color: white;
+    width: 100%;
+    margin-top: 120px;
+}
+.banner-desc {
+    display: flex;
+    justify-content: space-between;
+}
+.banner-desc .left p {
+    margin: 18px;
+    color: white;
+}
+.banner-desc .left h3 {
+    font-weight: 900;
+    font-size: 80px;
+    margin-left: 25px;
+}
+.banner-desc .right p {
+    font-size: 18px;
+    color: white;
+}
+.banner-desc .right h3 {
+    font-weight: 800;
+    font-size: 60px;
+}
+.banner-desc button {
+    border-radius: 15px;
+    padding: 10px 16px;
+    background-color: white;
+    color: #00afac;
+    border: none;
+    margin-top: 40px;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+}
+.footer-banner-image {
+    height: 594px;
+    position: absolute;
+    top: -35%;
+    left: 25%;
+    cursor: pointer;
+
+}
+.order-last img{
+    border-radius: 20%;
+    height: 80%;
+    width: 90%;
+}
+.custom {
+    background-color: #00b0ef;
+    border-radius: 0px 150px 0px 150px;
+    height: 90%;
+    width: 50%;
+}
+
+.custom img {
+    border-radius: 20%;
+    height: 110%;
+    width: 100%;
+    transition: transform 1s ease; /* Adjust the duration as needed */
+}
+
+.custom:hover img {
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+
+.maylike-products-wrapper {
+    margin-top: 120px;
+}
+.maylike-products-wrapper h3 {
+    text-align: center;
+    margin: 50px;
+    color: #324d67;
+    font-size: 38px;
+    font-weight: 700;
+}
+.marquee {
+    position: relative;
+    height: 280px;
+    width: 100%;
+    overflow-x: hidden;
+    background-color: #00afac;
+    border-radius: 20px;
+}
+.maylike-products-container {
+    display: flex;
+    justify-content: center;
+    grid-gap: 15px;
+    gap: 15px;
+    margin-top: 20px;
+    overflow: hidden;
+    position: relative;
+}
+
+.track {
+    position: absolute;
+    white-space: nowrap;
+    will-change: transform;
+    animation: marquee 15s linear infinite;
+    width: fit-content;
+}
+.tracking-tight{
+    margin-top: -50px;
+}
+
+.track:hover {
+    animation-play-state: paused;
+}
+
+@keyframes marquee {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+.flex-col-reverse{
+height: 70vh;
+}

@@ -1,0 +1,23 @@
+
+    .bg-gradient-to-br {
+        background: linear-gradient(135deg, #6293c8, #384c6c);
+    }
+
+    .bg-gradient-to-b {
+        background: linear-gradient(to bottom, #c3e6ec, #a7d1d9);
+    }
+
+    .hover\:before-hover:hover:before {
+        transform: scale(28);
+        transition: transform 0.35s ease-out;
+    }
+
+    .hover\:small-desc-hover:hover .small-desc {
+        transition: all 0.5s ease-out;
+        color: rgba(255, 255, 255, 0.8);
+    }
+    
+    .hover\:card-title-hover:hover .card-title {
+        transition: all 0.5s ease-out;
+        color: #ffffff;
+    }
