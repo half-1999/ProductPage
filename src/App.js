@@ -13,6 +13,7 @@ import Partner from "./Component/Pages/Partner";
 import Navbar3 from "./Component/Navbar/Navbar3";
 import Footerwa from "./Component/Footer/Footerwa";
 import DesignSolution from "./Component/Pages/DesignSolution";
+import Notfound from "./Component/Navbar/Notfound";
 function App() {
   return (
     <div className="  ">
@@ -31,6 +32,7 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/partner-with-us" element={<Partner />} />
           <Route path="/design-solution" element={<DesignSolution />} />
+          <Route path="*" element={<Notfound/>} />
         </Routes>
         {/* <Footer/> */}
         <Footerwa />

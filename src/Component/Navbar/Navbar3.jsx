@@ -4,12 +4,36 @@ import { FiSearch, FiShoppingCart, FiX } from "react-icons/fi";
 import { FaWhatsapp } from "react-icons/fa6";
 import { IoSearch } from "react-icons/io5";
 import { FaBars } from "react-icons/fa6";
+import Notfound from "./Notfound";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-hot-toast";
 
 import Whitelogo from "../../assets/white logo.png";
 const Navbar3 = () => {
+  const navigate = useNavigate();
   const [isScrolled, setScrolled] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [showSearch, setShowSearch] = useState(false);
+  const [formData, setFormData] = useState({
+    productName: "",
+  });
+
+  const [searchResults, setSearchResults] = useState([]);
+  const [showNotFound, setShowNotFound] = useState(false);
+  const [results, showresults] = useState();
+
+  const handleInputChange = (event) => {
+    const { value } = event.target;
+
+    setFormData({
+      ...formData,
+      productName: value,
+    });
+
+    // console.log("The Value Entered is ", value);
+    // Add necessary logic for product search using the value entered
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -34,6 +58,57 @@ const Navbar3 = () => {
     setMobileMenuOpen(!isMobileMenuOpen);
   };
 
+  // performSearchLogic
+  function performSearchLogic(data) {
+    console.log(data.toLowerCase());
+    const Products = ["arche", "novo"];
+    const data1 = data.toLowerCase();
+    for (let items of Products) {
+      if (items === data1) {
+        return data;
+      }
+    }
+
+    return "";
+  }
+  function searchHandler(event) {
+    event.preventDefault();
+    console.log("The Form is Submited  ");
+    // setFormData(formData.productName == "");
+    console.log("The form product Name Value ", formData.productName);
+    setFormData({ productName: "" });
+
+    const results = performSearchLogic(formData.productName);
+    console.log("The result is here ", results);
+
+    if (results === "Novo" || results === "novo") {
+      navigate("/allproducts/Novo");
+    } else if (results === "Arche" || results === "arche") {
+      navigate("/allproducts/Arche");
+    }
+    // Replace with your search logic
+    setSearchResults(results);
+    // Show Not Found component if results are empty
+    setShowNotFound(results.length === 0);
+    //
+  }
+
+  //
+  // useEffect(() => {
+  //   // ... (existing logic)
+
+  //   // Show Not Found toast if results are empty
+  //   if (results.length === 0) {
+  //     toast.error("No results found!", {
+  //       position: "top-center", // Display toast at the top-center of the screen
+  //       style: {
+  //         minWidth: "300px", // Set the minimum width of the toast
+  //         padding: "16px", // Increase padding for larger size
+  //         fontSize: "1.2rem", // Increase font size
+  //       },
+  //     });
+  //   }
+  // }, [results]);
   return (
     <nav
       className={`fixed top-0 w-full p-4 z-50 ${
@@ -309,8 +384,14 @@ const Navbar3 = () => {
         )}
 
         {!isMobile && (
-          <div className="flex items-center space-x-5">
-            <div className="flex gap-2 items-center transition-transform duration-300 transform hover:scale-110 mr-3">
+          <div className="flex items-center space-x-5 hover:cursor-pointer">
+            <div
+              onClick={() => {
+                setShowSearch(!showSearch);
+                console.log("The console is clicked here ");
+              }}
+              className="flex gap-2 items-center transition-transform duration-300 transform hover:scale-110 mr-3"
+            >
               <IoSearch
                 title="Whatsapp"
                 className="text-2xl text-[#00b0ea] cursor-pointer"
@@ -327,9 +408,26 @@ const Navbar3 = () => {
             </div>
           </div>
         )}
+
+        {showSearch && (
+          <form onSubmit={searchHandler}>
+            <div className=" top-5">
+              <input
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                value={formData.productName}
+                onChange={handleInputChange}
+                type="text"
+                placeholder="Search products"
+                // Add necessary event handlers or logic here for product search
+              />
+            </div>
+          </form>
+        )}
       </div>
+      {showNotFound && <Notfound setShowNotFound={setShowNotFound} />}
     </nav>
+
+    // { (showNotFound) && <Notfound />}
   );
 };
-
 export default Navbar3;
